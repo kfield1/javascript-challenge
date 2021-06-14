@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 app = Flask(__name__)
 @app.route("/")
 def hello_world():
@@ -6,13 +6,12 @@ def hello_world():
 
 @app.route("/json")
 def json_route():
-    j = [
-        {1:12},
-        {2:13},
-        {'something', 'else'},
-    ]
+    j = [1,2,3,4]
     return jsonify(j)
 
+@app.route('/someHTML')
+def someHTML():
+    return render_template ('index.html')
     
 if __name__ =="__main__":
     app.run(debug=True)
